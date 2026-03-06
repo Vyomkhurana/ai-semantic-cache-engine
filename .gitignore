@@ -1,0 +1,33 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.DS_Store
+Thumbs.db
+
+# data and generated files
+data/raw/
+data/20news-bydate/
+*.tar.gz
+*.zip
+
+# large index/embedding files
+embeddings/*.npy
+embeddings/*.index
+embeddings/*.pkl
+
+# cluster artifacts
+clustering/artifacts/
+
+# ide
+.vscode/
+.idea/
+
+# logs
+*.log
+logs/
