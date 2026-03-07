@@ -21,8 +21,8 @@ embeddings/*.npy
 embeddings/*.index
 embeddings/*.pkl
 
-# cluster artifacts
-clustering/artifacts/
+# cluster artifacts (keep dir, ignore large model files)
+clustering/artifacts/*.pkl
 
 # ide
 .vscode/
