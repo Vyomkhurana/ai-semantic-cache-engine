@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - cache_data:/app/data
+      - cache_embeddings:/app/embeddings
+      - cache_artifacts:/app/clustering/artifacts
+
+volumes:
+  cache_data:
+  cache_embeddings:
+  cache_artifacts:
