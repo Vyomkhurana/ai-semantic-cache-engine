@@ -20,4 +20,7 @@ GMM_ARTIFACTS_PATH = os.path.join(CLUSTERING_DIR, "gmm_model.pkl")
 CLUSTER_META_PATH = os.path.join(CLUSTERING_DIR, "cluster_meta.pkl")
 
 # cache
-SIMILARITY_THRESHOLD = 0.82  # tunable - explored in Part 3
+# threshold exploration (scripts/threshold_analysis.py) showed 0.65 gives best F1
+# precision stays 1.0 across all values - the model separates related/unrelated cleanly
+# recall drops fast above 0.75, so 0.65 is the practical sweet spot
+SIMILARITY_THRESHOLD = 0.65
