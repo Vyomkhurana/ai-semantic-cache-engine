@@ -8,7 +8,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN mkdir -p embeddings clustering/artifacts data
+RUN mkdir -p embeddings clustering/artifacts data && \
+    sed -i 's/\r//' entrypoint.sh && \
+    chmod +x entrypoint.sh
 
 EXPOSE 8000
 
