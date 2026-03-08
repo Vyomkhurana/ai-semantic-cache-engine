@@ -1,7 +1,17 @@
-# ai-semantic-cache-engine
+# AI Semantic Cache Engine
 
-semantic search system over the 20 Newsgroups dataset, built for the Trademarkia AI/ML Engineer task.  
-covers fuzzy clustering, a custom semantic cache, and a FastAPI service.
+**Trademarkia AI/ML Engineer Task Submission**
+
+| | |
+|---|---|
+| **Name** | Vyom Khurana |
+| **University** | Vellore Institute of Technology, Vellore |
+| **Reg. No.** | 23BDS0081 |
+
+---
+
+A semantic search and caching system built over the 20 Newsgroups dataset.  
+Queries are embedded with `all-MiniLM-L6-v2`, routed through a GMM fuzzy cluster index, and served via a FastAPI layer with a custom semantic cache — all running locally, no external APIs.
 
 ---
 
@@ -118,4 +128,36 @@ python scripts/threshold_analysis.py
 ```
 
 sweeps thresholds from 0.65 to 0.95, prints precision/recall/F1 table, saves chart.
+
+---
+
+## project structure
+
+```
+├── main.py                     # FastAPI app (3 endpoints)
+├── config.py                   # paths, model name, threshold
+├── cache/
+│   └── semantic_cache.py       # semantic cache built from scratch
+├── clustering/
+│   └── fuzzy_cluster.py        # GMM fuzzy clustering + soft assignments
+├── scripts/
+│   ├── preprocess.py           # corpus cleaning
+│   ├── build_index.py          # FAISS index builder
+│   ├── corpus_search.py        # search helper
+│   ├── cluster_analysis.py     # cluster breakdown + entropy stats
+│   └── threshold_analysis.py   # precision/recall sweep
+├── Dockerfile
+├── docker-compose.yml
+└── requirements.txt
+```
+
+## tech stack
+
+| component | choice | reason |
+|---|---|---|
+| embeddings | `all-MiniLM-L6-v2` | fast, local, 384-dim |
+| vector store | FAISS `IndexFlatIP` | exact cosine, no overhead at this scale |
+| clustering | Gaussian Mixture Model | soft assignments, handles topic overlap |
+| cache | custom (no Redis) | built from scratch as per task spec |
+| API | FastAPI + uvicorn | async, auto docs at `/docs` |
 
